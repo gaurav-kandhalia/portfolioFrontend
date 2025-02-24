@@ -15,12 +15,14 @@ const [Index,setIndex] = useState(0)
 
 
 
+
 // console.log("count====",count)
 
 
     return (<>
           <div className="text-white min-h-screen flex justify-center items-center flex-col gap-14 ">
           <div className="text-center font-bold text-2xl  "><span className="text-customPurple font-bold text-2xl">&lt;</span>My Projects<span className="text-customPurple font-bold text-2xl">/&gt;</span></div>
+          
           
        <div className=' p-6 shadow-purple-glow border  border-customPurple max-h-80px overflow-auto overflow-y-scroll custom-scrollbar '>
       

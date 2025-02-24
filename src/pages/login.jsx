@@ -2,30 +2,52 @@
 import svg from '../assets/background.webp'
 
 import axios from 'axios'
+import { useContext,useEffect,useState } from 'react'
+import { urlContext } from '../context/context'
 
-import { useContext, useState } from 'react'
 
 
-
-const Login = () => {
+const Login = ({setIsAdmin,isAdmin}) => {
  
   const [email,setEmail]= useState('')
   const [password,setPassword] = useState('')
-  const {url} = useContext()
+  const {url} = useContext(urlContext);
+  const [showMsg,setShowMsg] = useState(false);
+  
+  
 
+useEffect(()=>{
 
+  const timer  = setTimeout(()=>{
+    setShowMsg(false)
+  },3000)
+  return ()=>clearTimeout(timer)
+},[showMsg])
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
  const handleForm = async (e)=>{
 e.preventDefault();
-// console.log("email--",email);
-// console.log("password--",password)
+
 
 
 try{
-   await axios.post(`${url}/admin`,{email,password})
-  // console.log("data----",response.data)
+    
+  const response = await axios.post(`${url}/login`,{email,password})
+  console.log("data----",response.data);
+
+ if(response.data.isAdmin===true){
+
+  setIsAdmin(true)
+  }else{
+    setShowMsg(true)
+    setIsAdmin(false)
+  }
+  const timer  = setTimeout(()=>{
+    setShowMsg(false)
+  },3000)
+  return ()=>clearTimeout(timer)
+ 
 }catch(error){
   console.error('Error:', error.response ? error.response.data : error.message); 
 }
@@ -35,10 +57,12 @@ try{
     <section className='min-h-screen' style={{ backgroundImage: `url(${svg})` }}>
       <div className='flex justify-end p-7'>
         <div className='text-white text-xl font-bold'><span className='text-customPurple'>&lt;</span>Add Project<span className='text-customPurple'>/&gt;</span></div>
+        
 
       </div>
-      <div className="relative flex  text-gray-800 antialiased flex-col justify-center overflow-hidden mt-30  py-10" >
-
+    {showMsg && <div className="bg-red-500 text-white text-center p-2">Login failed</div>}
+      <div className="relative flex    text-gray-800 antialiased flex-col justify-center overflow-hidden mt-30  py-10" >
+      
 
         <div className="relative py-3 sm:w-96 mx-auto text-center  ">
           <span className="text-2xl font-light text-white">Login to your account</span>
