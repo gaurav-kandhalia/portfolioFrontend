@@ -1,10 +1,17 @@
 import '../css/style.css'
 
-const Bubble = ()=>{
+const Bubble = ({ left = '50%', size = '3rem', duration = 10, delay = 0 }) => {
     return (<>
-    <div className="circle h-12 w-12  rounded-full border-gray-500" >
-
-</div>
+    <div
+      className="circle rounded-full"
+      style={{
+        left,
+        width: size,
+        height: size,
+        animationDuration: `${duration}s`,
+        animationDelay: `${delay}s`,
+      }}
+    />
     </>)
 }
 

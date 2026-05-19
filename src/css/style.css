@@ -63,22 +63,28 @@
     transform: translate3d(0, 0, 0);
   }
   .circle {
-   
-    background: linear-gradient(135deg, rgba(100, 100, 255, 0.5), rgba(150, 50, 255, 0.5));
-    position: absolute;
-    z-index: 1;
-    opacity: 0.3;
-    animation: moveUp 10s ease-in-out infinite forwards;
+    background: linear-gradient(135deg, rgba(100, 100, 255, 0.35), rgba(150, 50, 255, 0.25));
+    position: fixed;
+    bottom: -10vh;
+    z-index: 0;
+    opacity: 0.4;
+    animation: moveUp 14s ease-in-out infinite forwards;
   }
-  
   
     @keyframes moveUp {
       0% {
-        transform: translate(1px,0vh); 
+        transform: translateY(0);
+        opacity: 0;
       }
-    
+      10% {
+        opacity: 0.4;
+      }
+      75% {
+        opacity: 0.4;
+      }
       100% {
-        transform: translate(10px,-500vh); 
+        transform: translateY(-180vh);
+        opacity: 0;
       }
     }
 

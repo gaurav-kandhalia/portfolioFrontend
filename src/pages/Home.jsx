@@ -16,17 +16,25 @@ import Bubble from '../components/Bubble'
 const Home = () => {
 const {getProject,setProject} = useContext(ProjectContext);
 const [count,setcount] = useState();
-const [visibleBubbles, setVisibleBubbles] = useState(Array(3).fill(false));
-const randomDelay = Math.floor(Math.random() * 2000) + 500;
+const bubbleConfigs = [
+  { left: '10%', size: '3rem', duration: 11, delay: 0 },
+  { left: '25%', size: '2.5rem', duration: 12, delay: 1 },
+  { left: '45%', size: '3.5rem', duration: 10, delay: 0.5 },
+  { left: '60%', size: '2.2rem', duration: 13, delay: 1.5 },
+  { left: '75%', size: '2.8rem', duration: 11.5, delay: 0.8 },
+  { left: '88%', size: '2rem', duration: 12.5, delay: 1.2 },
+];
+const [visibleBubbles, setVisibleBubbles] = useState(Array(bubbleConfigs.length).fill(false));
+
 useEffect(() => {
-  visibleBubbles.forEach((_, index) => {
+  bubbleConfigs.forEach((_, index) => {
     setTimeout(() => {
       setVisibleBubbles(prev => {
         const updated = [...prev];
         updated[index] = true;
         return updated;
       });
-    }, index * randomDelay); 
+    }, index * 600);
   });
 }, []);
 
@@ -35,7 +43,7 @@ useEffect(() => {
  
   return (<>
 
-    <div className=' bg-center bg-cover pb-20 pt-5  ' style={{ backgroundImage: `url(${svg})` }}>
+    <div className='relative bg-center bg-cover pb-20 pt-5  ' style={{ backgroundImage: `url(${svg})` }}>
 
 
   <div className='w-full sm:w-[90%] md:w-4/5 mx-auto '>
@@ -74,13 +82,18 @@ useEffect(() => {
  
   </div>
 
-<div className='flex sm:gap-32 gap-20 w-[90%] mx-auto flex-row border-2  text-white'>
-{visibleBubbles.map((visible, index) => (
-        <div key={index}>
-          {visible && <Bubble />}
-        </div>
-      ))}
-
+<div className='bubble-wrapper absolute inset-x-0 bottom-0 top-0 pointer-events-none'>
+  {visibleBubbles.map((visible, index) => (
+    visible && (
+      <Bubble
+        key={index}
+        left={bubbleConfigs[index].left}
+        size={bubbleConfigs[index].size}
+        duration={bubbleConfigs[index].duration}
+        delay={bubbleConfigs[index].delay}
+      />
+    )
+  ))}
 </div>
         
     </div>
