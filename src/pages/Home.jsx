@@ -17,12 +17,12 @@ const Home = () => {
 const {getProject,setProject} = useContext(ProjectContext);
 const [count,setcount] = useState();
 const bubbleConfigs = [
-  { left: '10%', size: '3rem', duration: 11, delay: 0 },
-  { left: '25%', size: '2.5rem', duration: 12, delay: 1 },
-  { left: '45%', size: '3.5rem', duration: 10, delay: 0.5 },
-  { left: '60%', size: '2.2rem', duration: 13, delay: 1.5 },
-  { left: '75%', size: '2.8rem', duration: 11.5, delay: 0.8 },
-  { left: '88%', size: '2rem', duration: 12.5, delay: 1.2 },
+  { left: '8%', size: '3rem', duration: 11, delay: 0, drift: '20px', scaleFrom: 0.6, scaleTo: 1.05 },
+  { left: '22%', size: '2.5rem', duration: 12.5, delay: 1, drift: '-22px', scaleFrom: 0.55, scaleTo: 1.15 },
+  { left: '38%', size: '3.5rem', duration: 10.5, delay: 0.4, drift: '28px', scaleFrom: 0.52, scaleTo: 1.08 },
+  { left: '58%', size: '2.2rem', duration: 13, delay: 0.9, drift: '-18px', scaleFrom: 0.65, scaleTo: 1.02 },
+  { left: '72%', size: '2.8rem', duration: 11.2, delay: 1.3, drift: '24px', scaleFrom: 0.57, scaleTo: 1.1 },
+  { left: '88%', size: '2rem', duration: 12.8, delay: 0.7, drift: '-26px', scaleFrom: 0.6, scaleTo: 1.12 },
 ];
 const [visibleBubbles, setVisibleBubbles] = useState(Array(bubbleConfigs.length).fill(false));
 
@@ -91,6 +91,9 @@ useEffect(() => {
         size={bubbleConfigs[index].size}
         duration={bubbleConfigs[index].duration}
         delay={bubbleConfigs[index].delay}
+        drift={bubbleConfigs[index].drift}
+        scaleFrom={bubbleConfigs[index].scaleFrom}
+        scaleTo={bubbleConfigs[index].scaleTo}
       />
     )
   ))}

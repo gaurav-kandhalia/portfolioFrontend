@@ -1,6 +1,6 @@
 import '../css/style.css'
 
-const Bubble = ({ left = '50%', size = '3rem', duration = 10, delay = 0 }) => {
+const Bubble = ({ left = '50%', size = '3rem', duration = 10, delay = 0, drift = '0px', scaleFrom = 0.6, scaleTo = 1 }) => {
     return (<>
     <div
       className="circle rounded-full"
@@ -10,6 +10,9 @@ const Bubble = ({ left = '50%', size = '3rem', duration = 10, delay = 0 }) => {
         height: size,
         animationDuration: `${duration}s`,
         animationDelay: `${delay}s`,
+        '--drift': drift,
+        '--scale-from': scaleFrom,
+        '--scale-to': scaleTo,
       }}
     />
     </>)

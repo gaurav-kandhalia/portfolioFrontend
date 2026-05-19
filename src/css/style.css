@@ -63,27 +63,39 @@
     transform: translate3d(0, 0, 0);
   }
   .circle {
-    background: linear-gradient(135deg, rgba(100, 100, 255, 0.35), rgba(150, 50, 255, 0.25));
+    background: radial-gradient(circle at 30% 30%, rgba(174, 176, 255, 0.65), rgba(108, 89, 255, 0.12));
+    box-shadow: 0 0 40px rgba(108, 89, 255, 0.14), inset 0 0 8px rgba(255,255,255,0.25);
     position: fixed;
-    bottom: -10vh;
+    bottom: -12vh;
     z-index: 0;
-    opacity: 0.4;
+    opacity: 0;
     animation: moveUp 14s ease-in-out infinite forwards;
+    transform-origin: center;
+    backdrop-filter: blur(1px);
   }
   
     @keyframes moveUp {
       0% {
-        transform: translateY(0);
+        transform: translateX(0) translateY(0) scale(var(--scale-from));
         opacity: 0;
       }
-      10% {
-        opacity: 0.4;
+      8% {
+        opacity: 0.45;
       }
-      75% {
-        opacity: 0.4;
+      40% {
+        transform: translateX(calc(var(--drift) / 2)) translateY(-45vh) scale(calc(var(--scale-from) + 0.15));
+        opacity: 0.5;
+      }
+      65% {
+        transform: translateX(calc(var(--drift) * -0.4)) translateY(-90vh) scale(calc(var(--scale-from) + 0.28));
+        opacity: 0.45;
+      }
+      85% {
+        transform: translateX(var(--drift)) translateY(-150vh) scale(var(--scale-to));
+        opacity: 0.25;
       }
       100% {
-        transform: translateY(-180vh);
+        transform: translateX(calc(var(--drift) * 1.2)) translateY(-190vh) scale(var(--scale-to));
         opacity: 0;
       }
     }
