@@ -9,8 +9,7 @@ const Hero = ()=>{
             <div className="font-bold sm:text-5xl text-3xl  mt-8">Hi, My name Is <span className="text-customPurple">Gaurav</span></div>
             <div className="font-bold sm:text-5xl text-3xl mt-3">
   I'm <span className="text-customPurple text-animation">
-    <span>w</span><span>e</span><span>b</span> 
-    <span>D</span><span>e</span><span>v</span><span>e</span><span>l</span><span>o</span><span>p</span><span>e</span><span>r</span>
+    <span>M</span><span>E</span><span>R</span><span>N</span> <span>S</span><span>t</span><span>a</span><span>c</span><span>k</span> <span>D</span><span>e</span><span>v</span><span>e</span><span>l</span><span>o</span><span>p</span><span>e</span><span>r</span>
   </span>
 </div>
 

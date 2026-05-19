@@ -1,3 +1,4 @@
+import { Element } from 'react-scroll'
 import '../css/style.css'
 import Text from '../components/Text.jsx'
 import Func from '../components/About/Func.jsx'
@@ -5,7 +6,6 @@ const braces = ['{', '}', '[', ']', '(', ')'];
 
 
 const Skills = () => {
-
 
   const About = {
     Myself: [
@@ -28,26 +28,55 @@ const Skills = () => {
         dot: '.',
         att: 'email',
         eq: '=',
-        val: "'gaurav@gmail.com'"
+        val: "'gauravkandhalia@gmail.com'"
       },
       {
         this: 'this',
         dot: '.',
         att: 'github',
         eq: '=',
-        val: "'https://github.com/gaurav-kandhalia' "
+        val: "'https://github.com/gaurav-kandhalia'",
+        link: 'https://github.com/gaurav-kandhalia'
+      },
+      {
+        this: 'this',
+        dot: '.',
+        att: 'leetcode',
+        eq: '=',
+        val: "'https://leetcode.com/u/Gauravkandhalia/'",
+        link: 'https://leetcode.com/u/Gauravkandhalia/'
       }
 
     ],
     Experience: [
-
+      
       {
-        val4: "{ 2024 - Now :  Web developer at Kreativan Technology}"
-      }, {
-        val4: "{2024 : Completed my internship in (Node js) at O7 services }"
+        role: 'Web Developer',
+        company: 'Wayne E Solutions',
+        location: 'Ludhiana',
+        period: '2025 Nov - Present',
+        details: 'Improving frontend interactions and code quality across projects.',
       },
       {
-        val4: "{2023 : completed my internship in frontend ( html,css,js, php) at O7 services} "
+        role: 'Web Developer',
+        company: 'Kreativan Technologies',
+        location: 'IT Park, Chandigarh',
+        period: '2024 Feb - 2025 Apr',
+        details: 'Built portfolio and feature pages using React and responsive design.',
+      },
+      {
+        role: 'Node.js Intern',
+        company: 'O7 Services',
+        location: 'Jalandhar',
+        period: '2024',
+        details: 'Worked on backend services and REST API integration.',
+      },
+      {
+        role: 'Frontend Intern',
+        company: 'O7 Services',
+        location: 'jalandhar',
+        period: '2023',
+        details: 'Built frontend experiences with HTML, CSS, JavaScript, and PHP.',
       }
 
     ],
@@ -156,7 +185,18 @@ const Skills = () => {
                 <Text text={val.att} />
                 <Text classname={'text-[#e3244c]'} text={val.eq} />
 
-                <Text classname={'text-[#24e33a]'} text={val.val} />
+                {val.link ? (
+                  <a
+                    href={val.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-[#24e33a] underline decoration-[#24e33a] hover:text-[#87f0ff]"
+                  >
+                    {val.val}
+                  </a>
+                ) : (
+                  <Text classname={'text-[#24e33a]'} text={val.val} />
+                )}
 
               </div>
             </>)
@@ -164,20 +204,27 @@ const Skills = () => {
         }
       </div>
 
-      <div className='ml-4 mt-4'>
-        <Func val={"Experience"} brace={"( ) {"} />
+      <Element name='experience'>
+        <div className='ml-4 mt-4'>
+          <Func val={"Experience"} brace={"( ) {"} />
+        </div>
+        <div className='ml-10'>
+          {About.Experience.map((item, index) => (
+          <div key={`experience-${index}`} className='text-[#24e33a] ml-6 mt-3'>
+            <div className='flex flex-wrap gap-2'>
+              <Text classname={'text-[#eeff31]'} text={item.period} />
+              <Text classname={'text-white'} text={'//'} />
+              <Text classname={'text-[#e3b341]'} text={`${item.role} at`} />
+              <Text classname={'text-[#24e33a]'} text={item.company} />
+              <Text classname={'text-[#7dd3fc]'} text={`(${item.location})`} />
+            </div>
+            <div className='ml-4 mt-1'>
+              <Text classname={'text-[#cbd5e1]'} text={item.details} />
+            </div>
+          </div>
+        ))}
       </div>
-      <div>
-        {
-          About.Experience.map((val, index) => {
-            return (<>
-              <Text classname={'text-[#24e33a] ml-16'} text={val.val4} key={`experience-${index}`} />
-
-            </>)
-          })
-        }
-      </div>
-      {/* <div className='ml-10'><span>{braces[3]}</span></div> */}
+      </Element>
       <Text divClassname={'ml-10'} text={braces[3]} />
 
 

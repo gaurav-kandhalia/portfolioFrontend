@@ -21,7 +21,7 @@ const Contact = ()=>{
 </div>
 <div className='flex gap-6'>
     <div><i className="fa-brands fa-github text-customPurple"></i></div>
-    <div className='text-customPurple font-bold'><a href="https://github.com/gaurav-kandhalia">Github</a></div>
+    <div className='text-customPurple font-bold'><a href="https://github.com/gaurav-kandhalia" target="_blank" rel="noreferrer">Github</a></div>
 </div>
 </div>
 

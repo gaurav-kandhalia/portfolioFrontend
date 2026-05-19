@@ -25,6 +25,7 @@ const Navbar = () => {
           </div>
         <div onClick={()=>ScrollTo('skills',300)} className='cursor-pointer'><span className='text-customPurple'>&lt;</span>Skills  <span className='text-customPurple'>/&gt;</span></div>
         <div className=' cursor-pointer' onClick={()=>ScrollTo('work',-300)}><span className='text-customPurple'>&lt;</span>Work <span className='text-customPurple'>/&gt;</span></div>
+        <div className=' cursor-pointer' onClick={()=>ScrollTo('experience',-300)}><span className='text-customPurple'>&lt;</span>Experience <span className='text-customPurple'>/&gt;</span></div>
         <div onClick={()=>ScrollTo('contact',-70)}><span className='text-customPurple cursor-pointer'>&lt;</span>Contact<span className='text-customPurple'>/&gt;</span></div>
       </nav>
     );
